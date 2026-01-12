@@ -1,0 +1,14 @@
+# Hardware-specific configurations (contain disk UUIDs, etc.)
+**/hardware-configuration.nix
+
+*.plain
+
+# Result symlinks from nix build
+result
+result-*
+
+# Editor files
+.direnv/
+*.swp
+*~
+\#*\#
