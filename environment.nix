@@ -13,9 +13,11 @@
     fzf
     neovim
     gnupg
-    python3
+    python314
     go
     fastfetch
+    htop
+    vuetorrent
   ];
 
   programs.zsh = {
