@@ -6,7 +6,7 @@
     enable = true;
     user = "sonarr";
     group = "services";
-    openFirewall = true;
+    openFirewall = false;
     settings = {
       server.port = 8989;
       log.analyticsEnabled = false;

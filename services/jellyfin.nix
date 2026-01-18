@@ -5,9 +5,8 @@
   # port 8096
   services.jellyfin = {
     enable = true;
-    openFirewall = true;
+    openFirewall = false;
     user = "jellyfin";
     group = "services";
-
   };
 }

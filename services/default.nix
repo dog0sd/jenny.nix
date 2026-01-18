@@ -8,6 +8,7 @@
   };
 
   imports = [
+    ./caddy.nix
     ./jellyfin.nix
     ./qbittorrent.nix
     ./radarr.nix

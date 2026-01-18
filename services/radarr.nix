@@ -6,7 +6,7 @@
     enable = true;
     user = "radarr";
     group = "services";
-    openFirewall = true;
+    openFirewall = false;
     settings = {
       server.port = 7878;
       log.analyticsEnabled = false;

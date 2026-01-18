@@ -1,4 +1,4 @@
-{ config, lib, pkgs, hostname, username, sshKey, hashedPassword, ... }:
+{ config, lib, pkgs, hostname, username, sshKey, hashedPassword, timeZone, defaultLocale, ... }:
 
 {
   imports = [
@@ -17,8 +17,8 @@
 
   networking.hostName = hostname;
 
-  time.timeZone = "Europe/Warsaw";
-  i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = timeZone;
+  i18n.defaultLocale = defaultLocale;
 
   users.users.${username} = {
     isNormalUser = true;
