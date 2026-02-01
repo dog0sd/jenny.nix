@@ -7,9 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, agenix, ... }@inputs:
     let
       vars = import ./variables.nix;
       system = vars.system;
@@ -20,12 +24,15 @@
         inherit system specialArgs;
         modules = [
           ./default.nix
+          agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = specialArgs;
-            nixpkgs.overlays = [ (final: prev: { unstable = final; }) ];
+            nixpkgs.overlays = [
+              (final: prev: { unstable = final; })
+            ];
           }
         ];
       };

@@ -1,7 +1,6 @@
 { config, lib, pkgs, domain, email, ... }:
 
 let
-  # path to certificates
   certDir = config.security.acme.certs.${domain}.directory;
 in
 {
@@ -15,8 +14,7 @@ in
       dnsProvider = "cloudflare";
       dnsPropagationCheck = true;
       dnsResolver = "1.1.1.1:53";
-      # CF_API_EMAIL and CF_API_KEY (or CF_DNS_API_TOKEN for API token)
-      environmentFile = "/var/lib/acme/cloudflare-credentials";
+      environmentFile = config.age.secrets.cf-dns-api-token.path;
     };
   };
 

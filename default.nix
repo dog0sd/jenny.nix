@@ -7,6 +7,24 @@
     ./dns.nix
     ./services
   ];
+  services.pipewire = {
+    enable = true;
+    audio.enable = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
+
+  age.secrets = {
+    cf-dns-api-token = {
+      file = ./secrets/cf-dns-api-token.age;
+      owner = "acme";
+      group = "acme";
+    };
+    telegram-bot-token = {
+      file = ./secrets/telegram-bot-token.age;
+      owner = username;
+    };
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.trusted-users = [ "root" "@wheel" ];
@@ -22,7 +40,7 @@
 
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkManager" "input" "jellyfin" ];
+    extraGroups = [ "wheel" "networkManager" "input" "audio" "jellyfin" ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [ sshKey ];
   } // lib.optionalAttrs (hashedPassword != null) {

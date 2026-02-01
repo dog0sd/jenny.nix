@@ -1,8 +1,12 @@
-{ config, lib, pkgs, username, ... }:
+{ config, lib, pkgs, username, inputs, ... }:
 
 {
   environment.localBinInPath = true;
   environment.variables.EDITOR = "nvim";
+  environment.variables.VISUAL = "nvim";
+  environment.shellAliases = {
+    vim = "nvim";
+  };
 
   environment.systemPackages = with pkgs; [
     git
@@ -15,9 +19,17 @@
     gnupg
     python314
     go
+    nodejs_25 # for openclaw (jenny)
+    pnpm_9
     fastfetch
     htop
     vuetorrent
+    mpv
+    pipewire
+    file
+    tree
+    neovim
+    inputs.agenix.packages.${pkgs.system}.default
   ];
 
   programs.zsh = {

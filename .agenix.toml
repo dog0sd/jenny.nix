@@ -1,0 +1,10 @@
+[identities]
+jenny = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGwYylFA+EguFhZs+bq5R6mAMpT/nkw+g8aUXO03nbfz root@nixos"
+
+[[paths]]
+glob = "secrets/cf-dns-api-token.age"
+identities = ["jenny"]
+
+[[paths]]
+glob = "secrets/telegram-bot-token.age"
+identities = ["jenny"]
