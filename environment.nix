@@ -26,6 +26,7 @@
     vuetorrent
     mpv
     pipewire
+    agenix-cli
     file
     tree
     neovim
