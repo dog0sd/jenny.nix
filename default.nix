@@ -1,4 +1,4 @@
-{ config, lib, pkgs, hostname, username, sshKey, hashedPassword, timeZone, defaultLocale, ... }:
+{ config, lib, pkgs, hostname, username, sshKey, timeZone, defaultLocale, ... }:
 
 {
   imports = [
@@ -10,6 +10,8 @@
   services.pipewire = {
     enable = true;
     audio.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
     wireplumber.enable = true;
   };
@@ -40,12 +42,12 @@
 
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkManager" "input" "audio" "jellyfin" ];
+    extraGroups = [ "wheel" "networkManager" "input" "audio" ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [ sshKey ];
-  } // lib.optionalAttrs (hashedPassword != null) {
-    initialHashedPassword = hashedPassword;
   };
+
+  security.sudo.wheelNeedsPassword = false;
 
   services.openssh.enable = true;
 

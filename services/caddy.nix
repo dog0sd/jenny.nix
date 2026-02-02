@@ -46,64 +46,6 @@ in
           respond "Hello from ${domain}!"
         '';
       };
-      "https://watch.${domain}" = {
-        extraConfig = ''
-          tls ${certDir}/cert.pem ${certDir}/key.pem
-          reverse_proxy 127.0.0.1:8096 {
-            header_up X-Real-IP {remote_host}
-            header_up X-Forwarded-For {remote_host}
-            header_up X-Forwarded-Proto {scheme}
-            header_up X-Forwarded-Host {host}
-            transport http {
-              read_buffer 8192
-            }
-          }
-        '';
-      };
-      "https://radarr.${domain}" = {
-        extraConfig = ''
-          tls ${certDir}/cert.pem ${certDir}/key.pem
-          reverse_proxy 127.0.0.1:7878 {
-            header_up X-Real-IP {remote_host}
-            header_up X-Forwarded-For {remote_host}
-            header_up X-Forwarded-Proto {scheme}
-            header_up X-Forwarded-Host {host}
-          }
-        '';
-      };
-      "https://sonarr.${domain}" = {
-        extraConfig = ''
-          tls ${certDir}/cert.pem ${certDir}/key.pem
-          reverse_proxy 127.0.0.1:8989 {
-            header_up X-Real-IP {remote_host}
-            header_up X-Forwarded-For {remote_host}
-            header_up X-Forwarded-Proto {scheme}
-            header_up X-Forwarded-Host {host}
-          }
-        '';
-      };
-      "https://prowlarr.${domain}" = {
-        extraConfig = ''
-          tls ${certDir}/cert.pem ${certDir}/key.pem
-          reverse_proxy 127.0.0.1:9696 {
-            header_up X-Real-IP {remote_host}
-            header_up X-Forwarded-For {remote_host}
-            header_up X-Forwarded-Proto {scheme}
-            header_up X-Forwarded-Host {host}
-          }
-        '';
-      };
-      "https://tr.${domain}" = {
-        extraConfig = ''
-          tls ${certDir}/cert.pem ${certDir}/key.pem
-          reverse_proxy 127.0.0.1:8112 {
-            header_up X-Real-IP {remote_host}
-            header_up X-Forwarded-For {remote_host}
-            header_up X-Forwarded-Proto {scheme}
-            header_up X-Forwarded-Host {host}
-          }
-        '';
-      };
     };
   };
 }

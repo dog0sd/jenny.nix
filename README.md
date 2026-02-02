@@ -1,6 +1,7 @@
 # another nixos config
 
-Here will be pretty simple and shareable/migratable nixos configuration of a home server on NixOS
+
+for adding encrypted secret use `echo "my secret token" | age -r "ssh-ed25519 ..." -r "ssh-rsa ..." > secrets/my-secret-token.age` command
 
 ```
 flake.nix           # parameters: hostname, username, sshKey, hashedPassword

@@ -6,10 +6,15 @@
   environment.variables.VISUAL = "nvim";
   environment.shellAliases = {
     vim = "nvim";
+    ls = "eza";
+    ll = "eza -la";
+    la = "eza -a";
+    lt = "eza --tree";
   };
 
   environment.systemPackages = with pkgs; [
     git
+    gh
     wget
     curl
     jq
@@ -19,6 +24,11 @@
     gnupg
     python314
     go
+
+    # gnumake
+    # gcc
+    # bash
+
     nodejs_25 # for openclaw (jenny)
     pnpm_9
     fastfetch
@@ -27,8 +37,12 @@
     mpv
     pipewire
     agenix-cli
+    age
+    alsa-utils
+    alsa-plugins
     file
     tree
+    eza
     neovim
     inputs.agenix.packages.${pkgs.system}.default
   ];
