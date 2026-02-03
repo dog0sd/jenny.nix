@@ -23,6 +23,7 @@
     neovim
     gnupg
     python314
+    uv
     go
 
     # gnumake
@@ -45,6 +46,14 @@
     eza
     neovim
     inputs.agenix.packages.${pkgs.system}.default
+
+    # media
+    chromium
+    ffmpeg
+    imagemagick
+
+    # AI/ML
+    openai-whisper
   ];
 
   programs.zsh = {
