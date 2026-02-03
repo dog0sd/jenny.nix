@@ -6,7 +6,6 @@
     ./environment.nix
     ./dns.nix
     ./services
-    ./sven.nix
   ];
   services.pipewire = {
     enable = true;
